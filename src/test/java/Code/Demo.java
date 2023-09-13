@@ -44,7 +44,7 @@ public class Demo {
 	String child1 = wins.get(1);
 	String child2 = wins.get(2);
 	
-	driver.switchTo().window(child2);
+	driver.switchTo().window(child1);
 	
 	System.out.println(driver.getTitle());
 	
