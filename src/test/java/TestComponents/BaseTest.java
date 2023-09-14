@@ -42,9 +42,10 @@ public class BaseTest {
 				System.getProperty("user.dir") + "\\src\\main\\java\\Resources\\GlobalData.properties");
 
 		pro.load(fis);
-		String browserName = pro.getProperty("browser");
 
-		logger = LogManager.getLogger(this.getClass()); // Logging
+		String browserName = System.getProperty("browser") != null ? System.getProperty("browser")
+				: pro.getProperty("browser");
+
 		if (browserName.equalsIgnoreCase("chrome")) {
 
 			driver = new ChromeDriver();
@@ -84,10 +85,6 @@ public class BaseTest {
 	 * RandomStringUtils.randomNumeric(10); return (generatedString2); }
 	 */
 
-
-
-	
-
 	@BeforeMethod(alwaysRun = true)
 	public LandingPage launchApplication() throws IOException {
 
@@ -100,7 +97,7 @@ public class BaseTest {
 
 	}
 
-    @AfterMethod(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
 		driver.quit();
 	}
